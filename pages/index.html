@@ -17,6 +17,29 @@
 
         // Coveo.load("Tab").then(_ => Coveo.get(document.querySelector('.CoveoTab[data-id=\'Memes\']')).select());
       })
+
+      const reSearch = () => Coveo.executeQuery(document.body);
+
+      const toggleFacetMode = () => {
+        const multiValuedFacets = ['Type'];
+
+        const checked = document.getElementById('facet-toggle').checked;
+        const toggleLabel = document.getElementById('facet-toggle-label');
+
+        toggleLabel.innerText = checked ? 'Facet Mode: AND' : 'Facet Mode: OR';
+
+        Coveo.load("Facet").then(_ =>
+          multiValuedFacets.forEach(facetTitle => {
+            if (checked) {
+              Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToAnd();
+            } else {
+              Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToOr();
+            }
+
+            reSearch();
+          })
+        )
+      };
     </script>
   </head>
   <body id="search" class='CoveoSearchInterface' data-enable-history="true">
@@ -32,6 +55,8 @@
     </div>
     <div class="coveo-main-section">
       <div class="coveo-facet-column">
+        <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
+        <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
         <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Source" data-field="@source" data-tab="All"></div>
         <!-- <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
