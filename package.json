@@ -12,7 +12,8 @@
     "watch": "npm run setup && npm run css && npx webpack --config webpack-serve.config --progress",
     "watchTest": "karma start",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "deploy": "aws s3 sync bin/ s3://coveo-pokemon-challenge --delete --profile personalaccount"
   },
   "keywords": [
     "coveo",
