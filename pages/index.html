@@ -3,23 +3,28 @@
   <head>
     <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, height=device-height" >
-    <title>Title</title>
+    <title>Pokémon Searcher</title>
     <link rel="stylesheet" href="./css/CoveoFullSearch.css"/>
     <link rel="stylesheet" href="./css/coveoextension.css"/>
     <script src="js/CoveoJsSearch.Lazy.js"></script>
     <script src="js/coveo.extension.js"></script>
     <script src="js/templates/templates.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        Coveo.SearchEndpoint.configureSampleEndpointV2();
+      document.addEventListener('DOMContentLoaded', () => {
+        // API key is ok to be shared
+        Coveo.SearchEndpoint.configureCloudV2Endpoint('davidspokemonuwqb358k', 'xx3c2527c4-129f-4ec1-a880-78b8198ddd57', 'https://platformqa.cloud.coveo.com/rest/search');  // Security concern
         Coveo.init(document.body);
+
+        // Coveo.load("Tab").then(_ => Coveo.get(document.querySelector('.CoveoTab[data-id=\'Memes\']')).select());
       })
     </script>
   </head>
   <body id="search" class='CoveoSearchInterface' data-enable-history="true">
-    <div class="CoveoHelloWorld"></div>
+    <!-- <button style="height:40px;width:40px" onclick="Coveo.executeQuery(document.getElementById('search'))">Click</button> -->
+    <!-- <div class="CoveoHelloWorld"></div> -->
     <div class="coveo-tab-section">
-      <a class="CoveoTab" data-id="All" data-caption="All Content"></a>
+      <a class="CoveoTab" data-id="All" data-caption="All them Pokémons"></a>
+      <!-- <a class="CoveoTab" data-id="Memes" data-caption="Just Memes"></a> -->
     </div>
     <div class='coveo-search-section'>
       <div class="CoveoSettings"></div>
@@ -27,11 +32,13 @@
     </div>
     <div class="coveo-main-section">
       <div class="coveo-facet-column">
-        <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
+        <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
+        <div class="CoveoFacet" data-title="Source" data-field="@source" data-tab="All"></div>
+        <!-- <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Author" data-field="@author" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Year" data-field="@year" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="Month" data-field="@month" data-tab="All"></div>
+        <div class="CoveoFacet" data-title="Month" data-field="@month" data-tab="All"></div> -->
       </div>
       <div class="coveo-results-column">
         <div class="CoveoShareQuery"></div>
