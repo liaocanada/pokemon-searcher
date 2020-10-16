@@ -1,103 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, height=device-height" >
-    <title>Pokémon Searcher</title>
-    <link rel="stylesheet" href="./css/CoveoFullSearch.css"/>
-    <link rel="stylesheet" href="./css/coveoextension.css"/>
-    <script src="js/CoveoJsSearch.Lazy.js"></script>
-    <script src="js/coveo.extension.js"></script>
-    <script src="js/templates/templates.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // API key is ok to be shared
-        Coveo.SearchEndpoint.configureCloudV2Endpoint('davidspokemonuwqb358k', 'xx3c2527c4-129f-4ec1-a880-78b8198ddd57', 'https://platformqa.cloud.coveo.com/rest/search');  // Security concern
-        Coveo.init(document.body);
 
-        // Coveo.load("Tab").then(_ => Coveo.get(document.querySelector('.CoveoTab[data-id=\'Memes\']')).select());
-      })
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height">
+  <title>Pokémon Searcher</title>
+  <link rel="stylesheet" href="./css/CoveoFullSearch.css" />
+  <link rel="stylesheet" href="./css/coveoextension.css" />
+  <script src="js/CoveoJsSearch.Lazy.js"></script>
+  <script src="js/coveo.extension.js"></script>
+  <script src="js/templates/templates.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // API key is ok to be shared
+      Coveo.SearchEndpoint.configureCloudV2Endpoint('davidspokemonuwqb358k', 'xx3c2527c4-129f-4ec1-a880-78b8198ddd57', 'https://platformqa.cloud.coveo.com/rest/search');  // Security concern
+      Coveo.init(document.body);
+    })
 
-      const reSearch = () => Coveo.executeQuery(document.body);
+    const reSearch = () => Coveo.executeQuery(document.body);
 
-      const toggleFacetMode = () => {
-        const multiValuedFacets = ['Type'];
+    const toggleFacetMode = () => {
+      const multiValuedFacets = ['Type'];
 
-        const checked = document.getElementById('facet-toggle').checked;
-        const toggleLabel = document.getElementById('facet-toggle-label');
+      const checked = document.getElementById('facet-toggle').checked;
+      const toggleLabel = document.getElementById('facet-toggle-label');
 
-        toggleLabel.innerText = checked ? 'Facet Mode: AND' : 'Facet Mode: OR';
+      toggleLabel.innerText = checked ? 'Facet Mode: AND' : 'Facet Mode: OR';
 
-        Coveo.load("Facet").then(_ =>
-          multiValuedFacets.forEach(facetTitle => {
-            if (checked) {
-              Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToAnd();
-            } else {
-              Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToOr();
-            }
+      Coveo.load("Facet").then(_ =>
+        multiValuedFacets.forEach(facetTitle => {
+          if (checked) {
+            Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToAnd();
+          } else {
+            Coveo.get(document.querySelector(`.CoveoFacet[data-title=${facetTitle}]`)).switchToOr();
+          }
 
-            reSearch();
-          })
-        )
-      };
-    </script>
-  </head>
-  <body id="search" class='CoveoSearchInterface' data-enable-history="true">
-    <!-- <button style="height:40px;width:40px" onclick="Coveo.executeQuery(document.getElementById('search'))">Click</button> -->
-    <!-- <div class="CoveoHelloWorld"></div> -->
-    <div class="coveo-tab-section">
-      <a class="CoveoTab" data-id="All" data-caption="All them Pokémons"></a>
-      <!-- <a class="CoveoTab" data-id="Memes" data-caption="Just Memes"></a> -->
+          reSearch();
+        })
+      )
+    };
+  </script>
+</head>
+
+<body id="search" class='CoveoSearchInterface' data-enable-history="true">
+  <div class="coveo-tab-section">
+    <a class="CoveoTab" data-id="All" data-caption="All them Pokémons"></a>
+    <!-- <a class="CoveoTab" data-id="Memes" data-caption="Just Memes"></a> -->
+  </div>
+  <div class='coveo-search-section'>
+    <div class="CoveoSettings"></div>
+    <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
+  </div>
+  <div class="coveo-main-section">
+    <div class="coveo-facet-column">
+      <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
+      <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
+      <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
+      <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-tab="All"
+        data-graph-steps=10 data-range-slider='true' data-rounded=1 steps=15></div>
+      <div class="CoveoFacetSlider" data-title="Height (m)" data-field="@pokemon_height" data-tab="All"
+        data-graph-steps=10 data-range-slider='true' data-rounded=2 steps=15></div>
     </div>
-    <div class='coveo-search-section'>
-      <div class="CoveoSettings"></div>
-      <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
-    </div>
-    <div class="coveo-main-section">
-      <div class="coveo-facet-column">
-        <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
-        <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
-        <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
-        <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-tab="All" 
-          data-graph-steps=10 data-range-slider='true' data-rounded=1 steps=15></div>
-        <div class="CoveoFacetSlider" data-title="Height (m)" data-field="@pokemon_height" data-tab="All" 
-          data-graph-steps=10 data-range-slider='true' data-rounded=2 steps=15></div>
-        <!-- <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="Author" data-field="@author" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="Year" data-field="@year" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="Month" data-field="@month" data-tab="All"></div> -->
+    <div class="coveo-results-column">
+      <div class="CoveoShareQuery"></div>
+      <div class="CoveoExportToExcel"></div>
+      <div class="CoveoPreferencesPanel">
+        <div class="CoveoResultsPreferences"></div>
+        <div class="CoveoResultsFiltersPreferences"></div>
       </div>
-      <div class="coveo-results-column">
-        <div class="CoveoShareQuery"></div>
-        <div class="CoveoExportToExcel"></div>
-        <div class="CoveoPreferencesPanel">
-          <div class="CoveoResultsPreferences"></div>
-          <div class="CoveoResultsFiltersPreferences"></div>
+      <div class="CoveoBreadcrumb"></div>
+      <div class="coveo-results-header">
+        <div class="coveo-summary-section">
+          <span class="CoveoQuerySummary"></span>
+          <span class="CoveoQueryDuration"></span>
         </div>
-        <div class="CoveoBreadcrumb"></div>
-        <div class="coveo-results-header">
-          <div class="coveo-summary-section">
-            <span class="CoveoQuerySummary"></span>
-            <span class="CoveoQueryDuration"></span>
-          </div>
-          <div class="coveo-result-layout-section">
-            <span class="CoveoResultLayout"></span>
-          </div>
-          <div class="coveo-sort-section">
-            <span class="CoveoSort" data-sort-criteria="relevancy" data-caption="Relevance"></span>
-            <span class="CoveoSort" data-sort-criteria="date descending,date ascending" data-caption="Date"></span>
-          </div>
+        <div class="coveo-result-layout-section">
+          <span class="CoveoResultLayout"></span>
         </div>
-        <div class="CoveoHiddenQuery"></div>
-        <div class="CoveoDidYouMean"></div>
-        <div class="CoveoErrorReport"></div>
-        <div class="CoveoResultList" data-layout="list" data-wait-animation="fade" data-auto-select-fields-to-include="true"></div>
-        <div class="CoveoResultList" data-layout="card" data-wait-animation="fade" data-auto-select-fields-to-include="true"></div>
-        <div class="CoveoPager"></div>
-        <div class="CoveoLogo"></div>
-        <div class="CoveoResultsPerPage"></div>
+        <div class="coveo-sort-section">
+          <span class="CoveoSort" data-sort-criteria="relevancy" data-caption="Relevance"></span>
+          <span class="CoveoSort" data-sort-criteria="date descending,date ascending" data-caption="Date"></span>
+        </div>
       </div>
+      <div class="CoveoHiddenQuery"></div>
+      <div class="CoveoDidYouMean"></div>
+      <div class="CoveoErrorReport"></div>
+      <div class="CoveoResultList" data-layout="list" data-wait-animation="fade"
+        data-auto-select-fields-to-include="true"></div>
+      <div class="CoveoResultList" data-layout="card" data-wait-animation="fade"
+        data-auto-select-fields-to-include="true"></div>
+      <div class="CoveoPager"></div>
+      <div class="CoveoLogo"></div>
+      <div class="CoveoResultsPerPage"></div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
