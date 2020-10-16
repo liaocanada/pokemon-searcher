@@ -58,7 +58,10 @@
         <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
         <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
         <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
-        <div class="CoveoFacet" data-title="Source" data-field="@source" data-tab="All"></div>
+        <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-tab="All" 
+          data-graph-steps=10 data-range-slider='true' data-rounded=1 steps=15></div>
+        <div class="CoveoFacetSlider" data-title="Height (m)" data-field="@pokemon_height" data-tab="All" 
+          data-graph-steps=10 data-range-slider='true' data-rounded=2 steps=15></div>
         <!-- <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Author" data-field="@author" data-tab="All"></div>
