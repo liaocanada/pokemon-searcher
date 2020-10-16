@@ -13,7 +13,8 @@
     "watchTest": "karma start",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect",
-    "deploy": "aws s3 sync bin/ s3://coveo-pokemon-challenge --delete --profile personalaccount"
+    "deploy": "aws s3 sync bin/ s3://coveo-pokemon-challenge --delete --profile personalaccount",
+    "cloudfront-invalidate": "aws cloudfront create-invalidation --distribution-id E2RPTHJ5TQAC2J --paths \"/*\" --profile personalaccount"
   },
   "keywords": [
     "coveo",
