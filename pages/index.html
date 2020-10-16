@@ -43,10 +43,6 @@
 </head>
 
 <body id="search" class='CoveoSearchInterface' data-enable-history="true">
-  <div class="coveo-tab-section">
-    <a class="CoveoTab" data-id="All" data-caption="All Pokémon"></a>
-    <!-- <a class="CoveoTab" data-id="Memes" data-caption="Just Memes"></a> -->
-  </div>
   <div class='coveo-search-section'>
     <div class="CoveoSettings"></div>
     <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
@@ -55,13 +51,13 @@
     <div class="coveo-facet-column">
       <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
       <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
-      <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types" data-tab="All"></div>
+      <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types"></div>
       <div class="CoveoFacetSlider" data-title="Pokémon National Number" data-field="@pokemon_nationalnumber"
-        data-tab="All" data-range-slider='true' steps=100 start=1></div>
-      <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-tab="All"
-        data-graph-steps=10 data-range-slider='true' data-rounded=1 steps=15></div>
-      <div class="CoveoFacetSlider" data-title="Height (m)" data-field="@pokemon_height" data-tab="All"
-        data-graph-steps=10 data-range-slider='true' data-rounded=2 steps=15></div>
+        data-range-slider='true' steps=100 start=1></div>
+      <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-graph-steps=10
+        data-range-slider='true' data-rounded=1 steps=15></div>
+      <div class="CoveoFacetSlider" data-title="Height (m)" data-field="@pokemon_height" data-graph-steps=10
+        data-range-slider='true' data-rounded=2 steps=15></div>
     </div>
     <div class="coveo-results-column">
       <div class="CoveoShareQuery"></div>
