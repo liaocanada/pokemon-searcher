@@ -52,6 +52,7 @@
       <input type="checkbox" id="facet-toggle" checked onchange="toggleFacetMode()" />
       <label for="facet-toggle" id="facet-toggle-label">Facet Mode: AND</label>
       <div class="CoveoFacet" data-title="Type" data-field="@pokemon_types"></div>
+      <div class="CoveoFacet" data-title="Type" data-field="@pokemon_generation" data-sort-criteria="alphaascending"></div>
       <div class="CoveoFacetSlider" data-title="Pokémon National Number" data-field="@pokemon_nationalnumber"
         data-range-slider='true' steps=100 start=1></div>
       <div class="CoveoFacetSlider" data-title="Weight (kg)" data-field="@pokemon_weight" data-graph-steps=10
@@ -92,7 +93,7 @@
         <script class="result-template" type="text/html" data-field-filetype="html">
           <div class="coveo-result-frame">
             <div class="coveo-result-cell">
-              <span class="CoveoImageFieldValue" data-field="@pokemon_imageurl" data-width=100></span>
+              <span class="CoveoImageFieldValue" data-field="@pokemon_imageurl" data-width=100 style="margin-right: 15px"></span>
               <div class="CoveoQuickview"></div>
             </div>
             <div class="coveo-result-cell">
