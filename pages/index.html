@@ -88,9 +88,67 @@
       <div class="CoveoDidYouMean"></div>
       <div class="CoveoErrorReport"></div>
       <div class="CoveoResultList" data-layout="list" data-wait-animation="fade"
-        data-auto-select-fields-to-include="true"></div>
+        data-auto-select-fields-to-include="true">
+        <script class="result-template" type="text/html" data-field-filetype="html">
+          <div class="coveo-result-frame">
+            <div class="coveo-result-cell">
+              <span class="CoveoImageFieldValue" data-field="@pokemon_imageurl" data-width=100></span>
+              <div class="CoveoQuickview"></div>
+            </div>
+            <div class="coveo-result-cell">
+              <div class="coveo-result-row"
+                   style="margin-top:0;">
+                <div class="coveo-result-cell">
+                  <a class="CoveoResultLink"></a>
+                </div>
+              </div>
+              <div class="coveo-result-row"
+                   style="margin-top:10px;">
+                <div class="coveo-result-cell">
+                  <span class="CoveoFieldValue"
+                    data-field="@pokemon_description"></span>
+                </div>
+              </div>
+              <div class="coveo-result-row"
+                   style="margin-top:10px;">
+                <div class="coveo-result-cell">
+                  <span class="CoveoFieldValue"
+                        data-field="@pokemon_nationalnumber"
+                        data-text-caption="National #"
+                        style="margin-right:30px;"></span>
+                  <span class="CoveoFieldValue"
+                        data-field="@pokemon_weight"
+                        data-text-caption="Weight (kg)"
+                        style="margin-right:30px;"></span>
+                  <span class="CoveoFieldValue"
+                        data-field="@pokemon_height"
+                        data-text-caption="Height (m)"
+                        style="margin-right:30px;"></span>
+                  <span class="CoveoFieldValue"
+                        data-field="@pokemon_generation"
+                        data-text-caption="Generation"
+                        style="margin-right:30px;"></span>
+                </div>
+              </div>
+              <div class="coveo-result-row"
+                   style="margin-top:10px;">
+                <div class="coveo-result-cell">
+                  <div class="CoveoPrintableUri"></div>
+                </div>
+              </div>
+              <div class="coveo-result-row">
+                <div class="coveo-result-cell">
+                  <div class="CoveoMissingTerms"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+      </div>
       <div class="CoveoResultList" data-layout="card" data-wait-animation="fade"
-        data-auto-select-fields-to-include="true"></div>
+        data-auto-select-fields-to-include="true">
+        <script></script>
+      </div>
       <div class="CoveoPager"></div>
       <div class="CoveoLogo"></div>
       <div class="CoveoResultsPerPage"></div>
