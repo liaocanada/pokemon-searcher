@@ -1,7 +1,7 @@
-# search-ui-seed
-A fast starter / seed project to extend the Coveo Javascript Framework
-
-This project is meant to display a working starting point for a project that wish to extend the [Coveo Javascript Search Framework](https://github.com/coveo/search-ui) with additional components.
+# Pokemon Searcher
+A demo use case for Coveo's search experience platform, making use of some of the core features of the platform. 
+![Website demo image 1](./images/image001.png)
+![Website demo image 2](./images/image002.png)
 
 ## Requirements
 Node JS => 8.0
